@@ -1,4 +1,4 @@
-package kr.com.sparta.outsourcing.infra.entity;
+package kr.com.sparta.outsourcing.store.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

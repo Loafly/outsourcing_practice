@@ -1,6 +1,7 @@
-package kr.com.sparta.outsourcing.infra.entity;
+package kr.com.sparta.outsourcing.order.infrastructure.entity;
 
 import jakarta.persistence.*;
+import kr.com.sparta.outsourcing.user.infrastructure.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

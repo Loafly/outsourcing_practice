@@ -22,6 +22,7 @@ public class Store {
     @Column(name = "min_order_amount", nullable = false)
     private Integer minOrderAmount;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private StoreStatus storeStatus;
 

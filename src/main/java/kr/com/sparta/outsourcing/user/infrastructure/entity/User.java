@@ -22,10 +22,16 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private UserRole userRole;
 
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
+    public User(String email, String password, UserRole userRole) {
+        this.email = email;
+        this.password = password;
+        this.userRole = userRole;
+    }
 }

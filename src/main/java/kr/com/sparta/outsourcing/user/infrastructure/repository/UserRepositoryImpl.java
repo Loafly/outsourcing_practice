@@ -14,14 +14,17 @@ public class UserRepositoryImpl implements UserRepository {
     private final UserJpaRepository userJpaRepository;
 
     @Override
-    public UserDomain save(String email, String password, String userRole) {
-        User user = userJpaRepository.save(new User(email,
-                password,
-                UserRole.valueOf(userRole)));
+    public UserDomain save(UserDomain userDomain) {
+        User user = userJpaRepository.save(
+                new User(
+                        userDomain.getEmail(), userDomain.getPassword(), userDomain.getUserRole()
+                )
+        );
 
         return new UserDomain(
                 user.getId(),
                 user.getEmail(),
+                user.getPassword(),
                 user.getUserRole()
         );
     }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository {
 
-    UserDomain save(String email, String password, String userRole);
-
+    UserDomain save(UserDomain userDomain);
     boolean existsByEmail(String email);
+
 }

@@ -1,8 +1,9 @@
 package kr.com.sparta.outsourcing.user.presentation.controller;
 
+import jakarta.validation.Valid;
 import kr.com.sparta.outsourcing.user.business.application.UserFacade;
-import kr.com.sparta.outsourcing.user.business.domain.service.UserService;
-import kr.com.sparta.outsourcing.user.presentation.dto.UserDto;
+import kr.com.sparta.outsourcing.user.presentation.dto.UserRequestDto;
+import kr.com.sparta.outsourcing.user.presentation.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/sign-up")
-    public void signUp(@RequestBody UserDto.SignUpRequest signUpRequest) {
-        userFacade.signUp(signUpRequest);
+    public UserResponseDto signUp(@Valid @RequestBody UserRequestDto.SignUpRequest signUpRequest) {
+        return new UserResponseDto(userFacade.signUp(signUpRequest));
     }
 }

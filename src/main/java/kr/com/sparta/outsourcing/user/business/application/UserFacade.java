@@ -1,8 +1,9 @@
 package kr.com.sparta.outsourcing.user.business.application;
 
 import kr.com.sparta.outsourcing.common.annotation.Facade;
+import kr.com.sparta.outsourcing.user.business.domain.entity.UserDomain;
 import kr.com.sparta.outsourcing.user.business.domain.service.UserService;
-import kr.com.sparta.outsourcing.user.presentation.dto.UserDto;
+import kr.com.sparta.outsourcing.user.presentation.dto.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,17 +15,10 @@ public class UserFacade {
 
     // 회원가입
     @Transactional
-    public void signUp(UserDto.SignUpRequest signUpRequest) {
+    public UserDomain signUp(UserRequestDto.SignUpRequest signUpRequest) {
 
-        String email = signUpRequest.email();
-        String password = signUpRequest.password();
-        String userRole = signUpRequest.userRole();
-
-        // email이 이미 있는 경우 예외처리
-        userService.throwExceptionIfExistsByEmail(email);
-
-        // 생성
-        userService.createUser(email, password, userRole);
+        return userService.createUser(
+                signUpRequest.email(), signUpRequest.password(), signUpRequest.userRole()
+        );
     }
-
 }

@@ -10,4 +10,6 @@ public record UserResponseDto(String email, String userRole) {
                 userDomain.getUserRole().toString()
         );
     }
+
+    public record SignInResponse(String accessToken){}
 }

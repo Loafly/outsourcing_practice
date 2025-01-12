@@ -10,4 +10,11 @@ public class UserRequestDto {
             @NotBlank(message = "비밀번호는 필수입니다.")  String password,
             @NotBlank(message = "사용자 권한은 필수입니다.") String userRole
     ) { }
+
+    public record SignInRequest(
+            @NotBlank(message = "이메일은 필수입니다.") @Email(message = "이메일 형식이 아닙니다.") String email,
+            @NotBlank(message = "비밀번호는 필수입니다.")  String password
+    ){}
+
+    public record DeleteRequest(@NotBlank(message = "비밀번호는 필수입니다.")  String password){}
 }

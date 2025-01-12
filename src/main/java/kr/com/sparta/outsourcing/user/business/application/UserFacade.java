@@ -21,4 +21,15 @@ public class UserFacade {
                 signUpRequest.email(), signUpRequest.password(), signUpRequest.userRole()
         );
     }
+
+    // 로그인
+    @Transactional(readOnly = true)
+    public String signIn(String email, String password) {
+        return userService.signIn(email, password);
+    }
+
+    @Transactional
+    public void deleteUser(Long id, String password) {
+        userService.softDeleteUserByIdAndPassword(id, password);
+    }
 }

@@ -1,6 +1,7 @@
 package kr.com.sparta.outsourcing.user.infrastructure.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "`user`")
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id

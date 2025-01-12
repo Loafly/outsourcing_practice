@@ -34,9 +34,13 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(ApiException.class)
-    protected ResponseEntity<ErrorResponse> handleCustomException(ApiException e) {
-        throw new ResponseStatusException(
-                e.getErrorCode().getStatus(), e.getMessage()
+    protected ResponseEntity<ApiErrorResponse> handleCustomException(ApiException e) {
+
+        ErrorCode errorCode = e.getErrorCode();
+
+        return new ResponseEntity<>(
+                new ApiErrorResponse(errorCode),
+                errorCode.getStatus()
         );
     }
 }
